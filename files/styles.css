@@ -1,0 +1,375 @@
+/* ============================================================
+   styles.css
+   All visual styles for VehicleWatch PH dashboard.
+   Uses Bootstrap 5 as base; only overrides/additions here.
+   ============================================================ */
+
+/* ── CSS VARIABLES ─────────────────────────────────────────── */
+:root {
+  --primary:       #1a56db;
+  --primary-light: #e8f0fe;
+  --sidebar-bg:    #0f172a;
+  --sidebar-text:  #94a3b8;
+  --body-bg:       #f8fafc;
+  --card-bg:       #ffffff;
+  --border:        #e2e8f0;
+  --text-main:     #0f172a;
+  --text-muted:    #64748b;
+
+  /* Vehicle colors */
+  --jeepney:    #2563eb;
+  --tricycle:   #d97706;
+  --bus:        #16a34a;
+  --car:        #7c3aed;
+  --motorcycle: #dc2626;
+  --uv:         #0891b2;
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background:  var(--body-bg);
+  color:       var(--text-main);
+  min-height:  100vh;
+  display:     flex;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────────────── */
+#sidebar {
+  width:     230px;
+  min-width: 230px;
+  background: var(--sidebar-bg);
+  display:   flex;
+  flex-direction: column;
+  position:  fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index:   100;
+}
+
+.sidebar-logo {
+  padding:       22px 20px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.sidebar-logo .logo-icon {
+  width: 34px; height: 34px;
+  background:    var(--primary);
+  border-radius: 8px;
+  display:       inline-flex;
+  align-items:   center;
+  justify-content: center;
+  margin-right:  10px;
+}
+.sidebar-logo .logo-name  { font-size: 15px; font-weight: 600; color: #fff; vertical-align: middle; }
+.sidebar-logo .logo-sub   { display: block; font-size: 10px; color: var(--sidebar-text); margin-top: 2px; letter-spacing: 0.05em; }
+
+.sidebar-section {
+  font-size:      10px;
+  font-weight:    600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          #475569;
+  padding:        20px 20px 6px;
+}
+
+.sidebar-nav a {
+  display:       flex;
+  align-items:   center;
+  gap:           10px;
+  padding:       9px 20px;
+  color:         var(--sidebar-text);
+  text-decoration: none;
+  font-size:     13.5px;
+  border-left:   3px solid transparent;
+  transition:    all 0.15s;
+}
+.sidebar-nav a:hover           { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar-nav a.active          { color: #fff; background: rgba(26,86,219,0.18); border-left-color: var(--primary); }
+.sidebar-nav a i               { font-size: 16px; }
+
+.sidebar-bottom {
+  margin-top:    auto;
+  padding:       16px 20px;
+  border-top:    1px solid rgba(255,255,255,0.07);
+}
+
+/* ── STATUS DOT (pulsing green) ─────────────────────────────── */
+.status-dot {
+  width:         8px;
+  height:        8px;
+  border-radius: 50%;
+  background:    #22c55e;
+  display:       inline-block;
+  margin-right:  6px;
+  animation:     pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ── MAIN AREA ──────────────────────────────────────────────── */
+#main {
+  margin-left:    230px;
+  flex:           1;
+  display:        flex;
+  flex-direction: column;
+  min-height:     100vh;
+}
+
+/* ── TOPBAR ─────────────────────────────────────────────────── */
+.topbar {
+  background:    #fff;
+  border-bottom: 1px solid var(--border);
+  padding:       12px 24px;
+  display:       flex;
+  align-items:   center;
+  justify-content: space-between;
+  position:      sticky;
+  top:           0;
+  z-index:       50;
+}
+.topbar-title { font-size: 16px; font-weight: 600; }
+.topbar-date  { font-size: 12px; color: var(--text-muted); }
+
+.btn-simulate {
+  background:    var(--primary);
+  color:         #fff;
+  border:        none;
+  border-radius: 8px;
+  padding:       7px 16px;
+  font-size:     13px;
+  font-family:   'DM Sans', sans-serif;
+  cursor:        pointer;
+  transition:    background 0.15s;
+}
+.btn-simulate:hover { background: #1648c0; }
+
+/* ── PAGE CONTENT ───────────────────────────────────────────── */
+.content { padding: 24px; }
+
+/* ── METRIC CARDS ───────────────────────────────────────────── */
+.metric-card {
+  background:    var(--card-bg);
+  border:        1px solid var(--border);
+  border-radius: 12px;
+  padding:       18px 20px;
+  display:       flex;
+  align-items:   flex-start;
+  gap:           14px;
+}
+.metric-icon {
+  width:         40px;
+  height:        40px;
+  border-radius: 10px;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  font-size:     18px;
+  flex-shrink:   0;
+}
+.metric-label { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+.metric-value { font-size: 26px; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+
+.badge-up   { background: #dcfce7; color: #15803d; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+.badge-down { background: #fee2e2; color: #b91c1c; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+.badge-neutral { background: #f1f5f9; color: #475569; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+
+/* ── SECTION CARDS ──────────────────────────────────────────── */
+.section-card {
+  background:    var(--card-bg);
+  border:        1px solid var(--border);
+  border-radius: 12px;
+  padding:       20px;
+}
+.section-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.section-sub   { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+
+/* ── CHART TABS ─────────────────────────────────────────────── */
+.dash-tab {
+  font-size:     12px;
+  padding:       5px 14px;
+  border:        1px solid var(--border);
+  border-radius: 20px;
+  background:    transparent;
+  color:         var(--text-muted);
+  cursor:        pointer;
+  font-family:   'DM Sans', sans-serif;
+  transition:    all 0.15s;
+}
+.dash-tab.active { background: var(--text-main); color: #fff; border-color: var(--text-main); }
+
+/* ── VIDEO PLAYER ───────────────────────────────────────────── */
+.video-wrapper {
+  background:    #0f172a;
+  border-radius: 10px;
+  aspect-ratio:  16/9;
+  display:       flex;
+  flex-direction: column;
+  align-items:   center;
+  justify-content: center;
+  position:      relative;
+  overflow:      hidden;
+  cursor:        pointer;
+}
+.video-wrapper video {
+  width:  100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+  border-radius: 10px;
+}
+.video-placeholder { text-align: center; }
+.video-placeholder i { font-size: 40px; color: #334155; }
+.video-placeholder p { font-size: 13px; color: #475569; margin: 10px 0 0; }
+
+.btn-secondary-action {
+  background:    #1e293b;
+  color:         #94a3b8;
+  border:        1px solid #334155;
+  border-radius: 8px;
+  padding:       7px 16px;
+  font-size:     13px;
+  font-family:   'DM Sans', sans-serif;
+  cursor:        pointer;
+}
+.btn-secondary-action:hover { background: #273549; color: #cbd5e1; }
+
+#detectionOverlay {
+  position:       absolute;
+  top:            10px;
+  left:           10px;
+  display:        flex;
+  flex-direction: column;
+  gap:            5px;
+}
+.det-tag { font-size: 11px; font-family: 'DM Mono', monospace; padding: 3px 10px; border-radius: 5px; }
+
+/* ── RANK LIST ──────────────────────────────────────────────── */
+.rank-row {
+  display:     flex;
+  align-items: center;
+  gap:         12px;
+  padding:     10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.rank-row:last-child { border-bottom: none; }
+.rank-number { font-size: 13px; font-weight: 600; color: #94a3b8; min-width: 18px; }
+.rank-bar-wrap { flex: 1; background: #f1f5f9; border-radius: 100px; height: 8px; overflow: hidden; }
+.rank-bar      { height: 8px; border-radius: 100px; }
+.rank-count    { font-size: 13px; font-weight: 500; min-width: 40px; text-align: right; }
+
+/* ── DONUT LEGEND ───────────────────────────────────────────── */
+.donut-legend-row {
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+  font-size:   12px;
+}
+.donut-legend-dot   { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.donut-legend-label { flex: 1; color: var(--text-muted); }
+.donut-legend-count { font-weight: 500; }
+.donut-legend-pct   { color: var(--text-muted); min-width: 32px; text-align: right; }
+
+/* ── CONFIDENCE LIST ────────────────────────────────────────── */
+.conf-row {
+  display:       flex;
+  align-items:   center;
+  gap:           10px;
+  padding:       8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size:     13px;
+}
+.conf-row:last-child { border-bottom: none; }
+.conf-label    { min-width: 90px; }
+.conf-bar-wrap { flex: 1; background: #f1f5f9; border-radius: 100px; height: 6px; overflow: hidden; }
+.conf-bar      { height: 6px; border-radius: 100px; }
+.conf-value    { font-weight: 500; font-size: 12px; font-family: 'DM Mono', monospace; min-width: 36px; text-align: right; }
+
+/* ── DETECTION LOG TABLE ────────────────────────────────────── */
+.log-table { font-size: 12.5px; width: 100%; }
+.log-table th {
+  font-size:      11px;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color:          var(--text-muted);
+  border-bottom:  1px solid var(--border);
+  padding:        8px 10px;
+}
+.log-table td {
+  padding:       8px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f5f9;
+  font-family:   'DM Mono', monospace;
+  font-size:     12px;
+}
+.log-table tbody tr:last-child td { border-bottom: none; }
+.log-id      { color: #94a3b8; }
+.log-empty   { text-align: center; color: #94a3b8; padding: 24px !important; }
+.conf-high   { color: #15803d; }
+.conf-mid    { color: #b45309; }
+.conf-low    { color: #b91c1c; }
+.status-tag  { font-size: 11px; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 20px; }
+
+/* ── VEHICLE BADGES ─────────────────────────────────────────── */
+.vbadge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.badge-jeepney    { background: #dbeafe; color: #1d4ed8; }
+.badge-tricycle   { background: #fef3c7; color: #b45309; }
+.badge-bus        { background: #dcfce7; color: #15803d; }
+.badge-car        { background: #ede9fe; color: #6d28d9; }
+.badge-motorcycle { background: #fee2e2; color: #b91c1c; }
+.badge-uv         { background: #cffafe; color: #0e7490; }
+
+/* ── ROBOFLOW CONNECTION PANEL ──────────────────────────────── */
+.conn-panel {
+  background:    #f8fafc;
+  border:        1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding:       16px;
+  font-size:     13px;
+}
+.conn-panel code {
+  background:  #1e293b;
+  color:       #7dd3fc;
+  font-family: 'DM Mono', monospace;
+  font-size:   12px;
+  padding:     10px 14px;
+  border-radius: 8px;
+  display:     block;
+  white-space: pre;
+  margin-top:  8px;
+  overflow-x:  auto;
+}
+.api-input-row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.api-input-row input {
+  flex:        1;
+  font-family: 'DM Mono', monospace;
+  font-size:   12px;
+  border:      1px solid var(--border);
+  border-radius: 8px;
+  padding:     7px 12px;
+  background:  #fff;
+  color:       var(--text-main);
+}
+.api-input-row input:focus { outline: 2px solid var(--primary); border-color: transparent; }
+
+.btn-connect {
+  background:    var(--primary);
+  color:         #fff;
+  border:        none;
+  border-radius: 8px;
+  padding:       7px 14px;
+  font-size:     13px;
+  font-family:   'DM Sans', sans-serif;
+  cursor:        pointer;
+}
+.btn-connect:hover { background: #1648c0; }
+
+.conn-status { font-size: 12px; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-top: 6px; }
+.conn-status.connected    { background: #dcfce7; color: #15803d; }
+.conn-status.disconnected { background: #f1f5f9; color: #64748b; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #sidebar { display: none; }
+  #main    { margin-left: 0; }
+}

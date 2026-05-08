@@ -1,0 +1,105 @@
+{
+  "vehiclewatch": {
+
+    "config": {
+      "app_name": "VehicleWatch PH",
+      "version": "1.0.0",
+      "active_stream": "youtube",
+      "youtube_channel_id": "UCdzKGrEXVVSZeSEkr5W4OJw",
+      "detection_interval_ms": 5000,
+      "roboflow_confidence": 40,
+      "roboflow_overlap": 30
+    },
+
+    "vehicles": {
+      "jeepney":    { "label": "Jeepney",    "color": "#2563eb", "active": true },
+      "tricycle":   { "label": "Tricycle",   "color": "#d97706", "active": true },
+      "bus":        { "label": "Bus",        "color": "#16a34a", "active": true },
+      "car":        { "label": "Car",        "color": "#7c3aed", "active": true },
+      "motorcycle": { "label": "Motorcycle", "color": "#dc2626", "active": true },
+      "uv_express": { "label": "UV Express", "color": "#0891b2", "active": true }
+    },
+
+    "daily_counts": {
+      "2026-05-08": {
+        "jeepney":    487,
+        "tricycle":   312,
+        "bus":        198,
+        "car":        176,
+        "motorcycle": 111,
+        "uv_express": 0,
+        "total":      1284,
+        "peak_hour":  "07:00",
+        "last_updated": "2026-05-08T07:00:00+08:00"
+      }
+    },
+
+    "hourly_counts": {
+      "2026-05-08": {
+        "05": { "jeepney": 12, "tricycle": 8,  "bus": 4,  "car": 5,  "motorcycle": 3,  "uv_express": 0 },
+        "06": { "jeepney": 28, "tricycle": 15, "bus": 8,  "car": 12, "motorcycle": 7,  "uv_express": 0 },
+        "07": { "jeepney": 55, "tricycle": 30, "bus": 18, "car": 20, "motorcycle": 14, "uv_express": 0 },
+        "08": { "jeepney": 42, "tricycle": 25, "bus": 14, "car": 18, "motorcycle": 10, "uv_express": 0 },
+        "09": { "jeepney": 38, "tricycle": 20, "bus": 12, "car": 15, "motorcycle": 9,  "uv_express": 0 },
+        "10": { "jeepney": 30, "tricycle": 18, "bus": 10, "car": 12, "motorcycle": 8,  "uv_express": 0 },
+        "11": { "jeepney": 22, "tricycle": 14, "bus": 8,  "car": 9,  "motorcycle": 6,  "uv_express": 0 },
+        "12": { "jeepney": 18, "tricycle": 10, "bus": 6,  "car": 8,  "motorcycle": 5,  "uv_express": 0 },
+        "13": { "jeepney": 25, "tricycle": 15, "bus": 9,  "car": 12, "motorcycle": 7,  "uv_express": 0 },
+        "14": { "jeepney": 32, "tricycle": 20, "bus": 12, "car": 15, "motorcycle": 9,  "uv_express": 0 },
+        "15": { "jeepney": 40, "tricycle": 25, "bus": 16, "car": 18, "motorcycle": 12, "uv_express": 0 },
+        "16": { "jeepney": 48, "tricycle": 30, "bus": 20, "car": 22, "motorcycle": 15, "uv_express": 0 },
+        "17": { "jeepney": 55, "tricycle": 35, "bus": 22, "car": 25, "motorcycle": 18, "uv_express": 0 },
+        "18": { "jeepney": 38, "tricycle": 22, "bus": 14, "car": 17, "motorcycle": 11, "uv_express": 0 },
+        "19": { "jeepney": 30, "tricycle": 18, "bus": 10, "car": 13, "motorcycle": 8,  "uv_express": 0 },
+        "20": { "jeepney": 20, "tricycle": 12, "bus": 7,  "car": 9,  "motorcycle": 5,  "uv_express": 0 }
+      }
+    },
+
+    "weekly_totals": {
+      "2026-04-30": { "total": 980,  "jeepney": 380, "tricycle": 240, "bus": 155, "car": 140, "motorcycle": 65,  "uv_express": 0 },
+      "2026-05-01": { "total": 1120, "jeepney": 430, "tricycle": 275, "bus": 178, "car": 160, "motorcycle": 77,  "uv_express": 0 },
+      "2026-05-02": { "total": 1045, "jeepney": 400, "tricycle": 260, "bus": 165, "car": 148, "motorcycle": 72,  "uv_express": 0 },
+      "2026-05-03": { "total": 1302, "jeepney": 500, "tricycle": 320, "bus": 205, "car": 185, "motorcycle": 92,  "uv_express": 0 },
+      "2026-05-04": { "total": 1188, "jeepney": 455, "tricycle": 295, "bus": 188, "car": 168, "motorcycle": 82,  "uv_express": 0 },
+      "2026-05-05": { "total": 1410, "jeepney": 540, "tricycle": 345, "bus": 222, "car": 200, "motorcycle": 103, "uv_express": 0 },
+      "2026-05-06": { "total": 1250, "jeepney": 480, "tricycle": 305, "bus": 196, "car": 176, "motorcycle": 93,  "uv_express": 0 },
+      "2026-05-07": { "total": 1284, "jeepney": 487, "tricycle": 312, "bus": 198, "car": 176, "motorcycle": 111, "uv_express": 0 }
+    },
+
+    "detections": {
+      "placeholder": {
+        "vehicle":    "jeepney",
+        "confidence": 93,
+        "frame":      1,
+        "timestamp":  "2026-05-08T05:00:00+08:00",
+        "source":     "youtube_live",
+        "location":   "EDSA"
+      }
+    },
+
+    "stream_sources": {
+      "gma_news": {
+        "label":      "GMA News Live",
+        "channel_id": "UCdzKGrEXVVSZeSEkr5W4OJw",
+        "embed_id":   "live",
+        "active":     true,
+        "location":   "Metro Manila / EDSA"
+      },
+      "one_news": {
+        "label":      "One News PH Live",
+        "channel_id": "UCISmzVCKhPY0ZxMAnAGKCGQ",
+        "embed_id":   "live",
+        "active":     true,
+        "location":   "Metro Manila"
+      },
+      "abscbn_news": {
+        "label":      "ABS-CBN News Live",
+        "channel_id": "UCgGHfcpHKZNNFNB0V88N9WA",
+        "embed_id":   "live",
+        "active":     false,
+        "location":   "Metro Manila / EDSA"
+      }
+    }
+
+  }
+}
